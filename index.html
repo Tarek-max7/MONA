@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffedf4">
+  <title>Happy Birthday Mona 💗</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+    :root{--pink:#f6a8c5;--deep:#c94f83;--ink:#563849;--cream:#fff8fb}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:Poppins, sans-serif;background:radial-gradient(circle at 20% 15%,#fff 0,transparent 28%),linear-gradient(135deg,#fff5f8,#ffe1ed 55%,#fff7fb);overflow-x:hidden}
+    .top-date{position:fixed;z-index:5;top:15px;left:50%;transform:translateX(-50%);padding:9px 18px;border:1px solid #ffffffb8;border-radius:30px;background:#ffffffa8;backdrop-filter:blur(10px);font-size:.78rem;letter-spacing:2px;color:#a84d75;box-shadow:0 8px 25px #bd66821a;white-space:nowrap}
+    .screen{min-height:100vh;display:none;align-items:center;justify-content:center;padding:90px 20px 45px;position:relative}
+    .screen.active{display:flex;animation:appear .8s ease both}
+    @keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .card{width:min(570px,100%);padding:clamp(28px,6vw,54px);text-align:center;border:1px solid #fff;background:#ffffffbd;backdrop-filter:blur(15px);border-radius:30px;box-shadow:0 25px 80px #b95c7b22;position:relative;z-index:1}
+    .eyebrow{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:#c16b8d}
+    h1{font:clamp(3.3rem,11vw,6rem) 'Great Vibes',cursive;color:#d45d91;margin:12px 0 4px;font-weight:400}
+    h2{font:600 clamp(1.6rem,5vw,2.2rem) 'Playfair Display',serif;margin:12px 0;color:#8e4566}
+    p{line-height:1.9;color:#79576a}
+    .heart{font-size:2.3rem;display:inline-block;animation:beat 1.4s infinite}
+    @keyframes beat{50%{transform:scale(1.2)}}
+    .field{width:100%;padding:15px 18px;border:1px solid #efbfd1;border-radius:14px;background:#fffafd;font:inherit;text-align:center;outline:none;color:#7d3d5b;letter-spacing:3px;margin:12px 0}
+    .field:focus{border-color:#d96c9a;box-shadow:0 0 0 4px #f6c7d9aa}
+    .btn{border:0;border-radius:30px;padding:13px 27px;background:linear-gradient(135deg,#ed91b4,#ce5e91);color:white;font:500 .95rem Poppins;cursor:pointer;box-shadow:0 9px 22px #d56c982e;transition:.2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 13px 25px #d56c9850}
+    .hint{font-size:.8rem;color:#ad8296;min-height:22px}
+    .message{font:clamp(1.15rem,3.8vw,1.45rem) 'Playfair Display',serif;line-height:2;color:#70465a;min-height:150px;display:grid;place-items:center;margin:25px 0}
+    .progress{height:4px;background:#f7dce7;border-radius:10px;overflow:hidden;margin:25px 0}
+    .progress span{display:block;height:100%;width:0;background:#d96c9a;transition:width .4s}
+    .photo-frame{margin:20px auto;width:min(260px,75%);aspect-ratio:1;border:10px solid white;border-radius:50%;background:linear-gradient(135deg,#f9c6d9,#fceaf1);display:grid;place-items:center;box-shadow:0 12px 35px #bd668233;overflow:hidden}
+    .photo-frame img{width:100%;height:100%;object-fit:cover}
+    .small{font-size:.82rem;color:#a77a90}
+    .floating{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+    .floating span{position:absolute;bottom:-50px;color:#ed9fbd;opacity:.45;animation:floatUp linear infinite}
+    @keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+    .sparkle{color:#e7a0bb}
+    footer{font-size:.75rem;color:#b68b9e;margin-top:25px}
+    @media(max-width:480px){.card{border-radius:24px}.top-date{top:10px;font-size:.68rem}}
+  </style>
+</head>
+<body>
+  <div class="top-date">02 · 02 · 2007 &nbsp; ✦ &nbsp; MONA'S SPECIAL DAY</div>
+  <div class="floating" id="floating"></div>
+
+  <main>
+    <section class="screen active" id="welcome">
+      <div class="card">
+        <div class="eyebrow">A little surprise made with love</div>
+        <div class="heart">💗</div>
+        <h1>For Mona</h1>
+        <h2>Happy Birthday</h2>
+        <p>Someone special deserves a day as beautiful as her.<br>Are you ready for your little surprise?</p>
+        <button class="btn" onclick="showScreen('lock')">Open Your Surprise ✨</button>
+        <footer>Made especially for you, Mona</footer>
+      </div>
+    </section>
+
+    <section class="screen" id="lock">
+      <div class="card">
+        <div class="eyebrow">This little world is yours</div>
+        <h1>Just for you</h1>
+        <p>Enter the secret password to unlock your birthday surprise.</p>
+        <input class="field" id="password" type="password" placeholder="PASSWORD" autocomplete="off" aria-label="Password">
+        <div class="hint" id="passwordHint"></div>
+        <button class="btn" onclick="unlock()">Unlock My Surprise 💕</button>
+      </div>
+    </section>
+
+    <section class="screen" id="messages">
+      <div class="card">
+        <div class="eyebrow">A few words from the heart</div>
+        <h1>Dear Mona</h1>
+        <div class="progress"><span id="progressBar"></span></div>
+        <div class="message" id="messageText">Today is all about you...</div>
+        <button class="btn" id="nextBtn" onclick="nextMessage()">Next 💗</button>
+        <p class="small" id="messageCount">1 / 5</p>
+      </div>
+    </section>
+
+    <section class="screen" id="final">
+      <div class="card">
+        <div class="eyebrow">One last thing...</div>
+        <div class="photo-frame"><span style="font-size:5rem">🎂</span></div>
+        <h1>Happy Birthday, Mona!</h1>
+        <h2>02 · 02 · 2007</h2>
+        <p>May your days be filled with laughter, your heart with peace, and your life with beautiful surprises. Keep shining, keep smiling, and never forget how special you are. 💖</p>
+        <div class="heart">🌷</div>
+        <button class="btn" onclick="makeWish()">Make a Wish ✨</button>
+        <p class="small" id="wishText"></p>
+        <footer>With love, just for Mona ♡</footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const SECRET = "MONA";
+    const messages = [
+      "Mona, today the world celebrates the beautiful day you came into it. I hope this year brings you everything your heart wishes for.",
+      "Your smile can make an ordinary day feel special. Never let the world take that beautiful light away from you.",
+      "You deserve kindness, happiness, endless laughter, and people who remind you every day how wonderful you are.",
+      "May every new step bring you closer to your dreams. May your heart always find reasons to be happy.",
+      "And most importantly… never forget that you are one of a kind. Happy Birthday, Mona! 💗"
+    ];
+    let messageIndex = 0;
+    function showScreen(id){
+      document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function unlock(){
+      const value=document.getElementById('password').value.trim().toUpperCase();
+      const hint=document.getElementById('passwordHint');
+      if(value===SECRET){hint.textContent='';messageIndex=0;renderMessage();showScreen('messages')}
+      else{hint.textContent='Not quite! Try again 💗';document.getElementById('password').value='';}
+    }
+    document.getElementById('password').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+    function renderMessage(){
+      document.getElementById('messageText').textContent=messages[messageIndex];
+      document.getElementById('messageCount').textContent=`${messageIndex+1} / ${messages.length}`;
+      document.getElementById('progressBar').style.width=`${(messageIndex+1)/messages.length*100}%`;
+      document.getElementById('nextBtn').textContent=messageIndex===messages.length-1?'See Your Surprise 🎁':'Next 💗';
+    }
+    function nextMessage(){
+      if(messageIndex<messages.length-1){messageIndex++;renderMessage()}
+      else{showScreen('final');confettiHearts()}
+    }
+    function makeWish(){
+      document.getElementById('wishText').textContent='Close your eyes, make a wish, and let the magic begin. ✨';
+      confettiHearts();
+    }
+    function confettiHearts(){
+      const symbols=['💗','💕','✨','🌸','💖'];
+      for(let i=0;i<24;i++){
+        const el=document.createElement('span');el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        el.style.position='fixed';el.style.left=Math.random()*100+'vw';el.style.top='105vh';el.style.zIndex='10';
+        el.style.fontSize=(16+Math.random()*20)+'px';el.style.transition='transform 4s linear, opacity 4s';
+        document.body.appendChild(el);
+        requestAnimationFrame(()=>{el.style.transform=`translateY(-120vh) rotate(${Math.random()*600-300}deg)`;el.style.opacity='0'});
+        setTimeout(()=>el.remove(),4100);
+      }
+    }
+    const floating=document.getElementById('floating');
+    for(let i=0;i<22;i++){
+      const s=document.createElement('span');s.textContent=['♡','♥','✧','✦'][i%4];
+      s.style.left=Math.random()*100+'%';s.style.fontSize=(14+Math.random()*24)+'px';
+      s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(-Math.random()*18)+'s';
+      floating.appendChild(s);
+    }
+  </script>
+</body>
+</html>
